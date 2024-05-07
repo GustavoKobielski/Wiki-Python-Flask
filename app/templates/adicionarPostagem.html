@@ -1,0 +1,27 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<div class="container">
+    {% include 'nave.html' %}
+    <div class="row mt-4">
+        <h3>Envio de Contatos</h3>
+    </div>
+    <form action="" method="post" class="row mt-4 p-4 round border shadow">
+       {{form.csrf_token}}
+
+       {{form.nickname.label()}}
+       {{form.nickname(class="form-control")}}
+
+       {{form.titulo.label()}}
+       {{form.titulo(class="form-control")}}
+
+       {{form.mensagem.label()}}
+       {{form.mensagem(class="form-control")}}
+
+       {{form.btnSubmit(class="btn btn-dark col-12 mt-3")}}
+
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+{% endblock %}

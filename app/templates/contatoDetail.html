@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="container">
+{% include 'nave.html' %}
+
+<div class="row mt-4">
+    <h3>Todos os Wiki's</h3>
+
+    <div class="col-md-6 mt-4">
+        Nickname:
+        <input type="text" value="{{obj.nickname}}" class="form-control btn-dark text-dark" readonly>
+    </div>
+
+    <div class="col-md-6 mt-4">
+        Titulo:
+        <input type="text" value="{{obj.titulo}}" class="form-control btn-dark text-dark" readonly>
+    </div>
+
+    <div class="col-md-12 mt-4">
+        Mensagem:
+        <textarea type="text" rows="3" class="form-control btn-dark text-dark" readonly>{{obj.mensagem}}</textarea>
+    </div>
+
+    <form action="" method="post" class="row mt-4 p-4 round border shadow">
+        {{ form.csrf_token }}
+        
+        {{ form.hidden_tag() }}
+    
+        {{form.nickname.label()}}
+        {{form.nickname(class="form-control")}}
+
+        {{ form.resposta.label() }}
+        {{ form.resposta(class="form-control") }}
+    
+        {{ form.btnSubmitt(class="btn btn-dark col-12 mt-2") }}
+    </form>
+
+    <div class="row mt-4">
+        <h3>Comentários</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nickname</th>
+                    <th>Comentário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comentario in obj.respostas %}
+                <tr>
+                    <td>{{ comentario.nickname }}</td>
+                    <td>{{ comentario.resposta }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
+</div>
+
+{% endblock %}
+
+</div>
